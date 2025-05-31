@@ -1,10 +1,10 @@
-
-import React, { useState } from 'react';
-import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
-import { ClipboardList, GraduationCap, BarChart3, Trash2 } from 'lucide-react';
-import WasteDisposalForm from './WasteDisposalForm';
+import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
+import { BarChart3, BookOpen, ClipboardList, GraduationCap, Trash2 } from 'lucide-react';
+import { useState } from 'react';
 import EducationQuiz from './EducationQuiz';
+import Lessons from './Lessons'; // ✅ Added Lessons import
+import WasteDisposalForm from './WasteDisposalForm';
 import WasteSummary from './WasteSummary';
 
 const StaffDashboard = () => {
@@ -18,7 +18,7 @@ const StaffDashboard = () => {
       </div>
 
       <Tabs value={activeTab} onValueChange={setActiveTab} className="w-full">
-        <TabsList className="grid w-full grid-cols-3">
+        <TabsList className="grid w-full grid-cols-4">
           <TabsTrigger value="disposal" className="flex items-center space-x-2">
             <Trash2 className="h-4 w-4" />
             <span>Waste Disposal</span>
@@ -26,6 +26,10 @@ const StaffDashboard = () => {
           <TabsTrigger value="quiz" className="flex items-center space-x-2">
             <GraduationCap className="h-4 w-4" />
             <span>Education Quiz</span>
+          </TabsTrigger>
+          <TabsTrigger value="lessons" className="flex items-center space-x-2">
+            <BookOpen className="h-4 w-4" />
+            <span>Lessons</span>
           </TabsTrigger>
           <TabsTrigger value="summary" className="flex items-center space-x-2">
             <BarChart3 className="h-4 w-4" />
@@ -63,6 +67,23 @@ const StaffDashboard = () => {
             </CardHeader>
             <CardContent>
               <EducationQuiz />
+            </CardContent>
+          </Card>
+        </TabsContent>
+
+        <TabsContent value="lessons">
+          <Card>
+            <CardHeader>
+              <CardTitle className="flex items-center space-x-2">
+                <BookOpen className="h-5 w-5 text-healthcare-yellow" />
+                <span>Educational Lessons</span>
+              </CardTitle>
+              <CardDescription>
+                Learn best practices and regulations for medical waste handling
+              </CardDescription>
+            </CardHeader>
+            <CardContent>
+              <Lessons />
             </CardContent>
           </Card>
         </TabsContent>
